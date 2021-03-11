@@ -1,0 +1,14 @@
+results
+.idea/
+
+# IDE
+.vscode
+
+# Python
+__pycache__
+*.pyw
+*.egg-info
+*.pyc
+*.py.bak
+.pytest_cache/
+
