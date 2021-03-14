@@ -13,8 +13,6 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..',
 from edam.utils.parser import txt_to_nparray
 from edam.utils.LineMesh import LineMesh
 
-# E.G. python apps/volumetric_fusion/__main__.py -o /media/david/DiscoDuroLinux/Datasets/Monodepth2_results/Hamlyn/stereo_ImgNet_halfRes_epoch2/test1 -i apps/tracking_ours/results/test1_fr2.pkl
-
 
 def parse_args() -> argparse.Namespace:
     """Returns the ArgumentParser of this app.
@@ -30,7 +28,7 @@ def parse_args() -> argparse.Namespace:
         "--output_root_directory",
         type=str,
         required=True,
-        help="Root directory where mesh is saved. E.g. ~/file-directory/test1",
+        help="Root directory where mesh is saved. E.g. path/to/test1",
     )
     parser.add_argument(
         "-i",
@@ -71,11 +69,11 @@ def main():
                        f"{pose[3, 0]} {pose[3, 1]} {pose[3, 2]} {pose[3, 3]}\n"
                        )
     trajectory = o3d.io.read_pinhole_camera_trajectory(os.path.join(folder_to_save_results, 'poses.log'))
+    os.remove(os.path.join(folder_to_save_results, 'poses.log'))
     _, _, intrinsic = load_frame(root, i)
     for i in frame_numbers:
         print("Changing intrinsics of the {:d}-th image.".format(i))
         trajectory.parameters[i].intrinsic = intrinsic
-
     o3d.io.write_pinhole_camera_trajectory(os.path.join(folder_to_save_results, 'trajectory.log'), trajectory)
 
     rgbd_images = compute_rgbd_images(root, frame_numbers)

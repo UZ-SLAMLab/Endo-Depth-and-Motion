@@ -30,8 +30,6 @@ from edam.utils.depth import depth_to_color
 from edam.utils.LineMesh import LineMesh
 
 
-# E.G. python apps/tracking_open3d/__main__.py -i /media/david/DiscoDuroLinux/Datasets/Monodepth2_results/Hamlyn/stereo_ImgNet_halfRes_epoch2 -d cuda:0 -t park
-
 def parse_args() -> argparse.Namespace:
     """Returns the ArgumentParser of this app.
 
@@ -46,7 +44,7 @@ def parse_args() -> argparse.Namespace:
         "--input-root-directory",
         type=str,
         required=True,
-        help="Root directory where scans are find. E.G. ",
+        help="Root directory where scans are find. E.G. path/to/hamlyn_tracking_test_data",
     )
     parser.add_argument(
         "-d",
@@ -67,7 +65,7 @@ def parse_args() -> argparse.Namespace:
         "--folder_output",
         type=str,
         default="results",
-        help="Folder where datasets are saved.",
+        help="Folder where odometries are saved.",
     )
     parser.add_argument(
         "-t",
@@ -80,8 +78,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "-r",
         "--ransac",
-        help="Realize a global registration with RANSAC to compute a pre-translation between two point clouds before "
-             "compute the final translation with local registration",
+        help="Execute a global registration with RANSAC to compute a pre-translation between the two point clouds "
+             "before calculating the final translation with the local registration",
         action="store_true"
     )
     return parser.parse_args()
@@ -107,8 +105,6 @@ def main():
     poses_register["scene_info"] = []
     poses_register["frame_number"] = []
     poses_register["estimated_pose"] = []
-    poses_register["error translation"] = []
-    poses_register["error rotation"] = []
     folder_to_save_results = Path(args.folder_output)
     if not (folder_to_save_results.exists()):
         folder_to_save_results.mkdir(parents=True, exist_ok=True)

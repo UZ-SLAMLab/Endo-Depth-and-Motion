@@ -31,7 +31,6 @@ from edam.utils.image.pilimage import (
 from edam.utils.depth import depth_to_color
 from edam.utils.LineMesh import LineMesh
 
-# E.G. python apps/tracking_ours/__main__.py -i /media/david/DiscoDuroLinux/Datasets/Monodepth2_results/Hamlyn/stereo_ImgNet_halfRes_epoch2 -d cuda:0 -o apps/tracking_ours/results
 
 def parse_args() -> argparse.Namespace:
     """Returns the ArgumentParser of this app.
@@ -47,7 +46,7 @@ def parse_args() -> argparse.Namespace:
         "--input_root_directory",
         type=str,
         required=True,
-        help="Root directory where scans are find. E.G. ",
+        help="Root directory where scans are find. E.G. path/to/hamlyn_tracking_test_data",
     )
     parser.add_argument(
         "-d",
@@ -75,14 +74,14 @@ def parse_args() -> argparse.Namespace:
         "--folder_output",
         type=str,
         default="results",
-        help="Folder where datasets are saved.",
+        help="Folder where odometries are saved.",
     )
     parser.add_argument(
         "-st",
         "--scales_tracking",
         type=int,
         default=2,
-        help="Number of frames until a new keyframes.",
+        help="Number of floors of the pyramid.",
     )
 
     return parser.parse_args()
@@ -112,8 +111,6 @@ def main():
     poses_register["scene_info"] = []
     poses_register["frame_number"] = []
     poses_register["estimated_pose"] = []
-    poses_register["error translation"] = []
-    poses_register["error rotation"] = []
     folder_to_save_results = Path(args.folder_output)
     if not (folder_to_save_results.exists()):
         folder_to_save_results.mkdir(parents=True, exist_ok=True)
