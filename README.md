@@ -5,6 +5,7 @@ This repository contains the code of *Endo-Depth*'s depth predictions from singl
 > **Localization and Reconstruction in Endoscopic Videos using Depth Networks and Photometric Constraints**
 >
 > [David Recasens](https://davidrecasens.github.io/), [José Lamarca](https://webdiis.unizar.es/~jlamarca/), [José M. Fácil](https://webdiis.unizar.es/~jmfacil/), [José María M. Montiel](https://janovas.unizar.es/sideral/CV/jose-maria-martinez-montiel) and [Javier Civera](https://janovas.unizar.es/sideral/CV/javier-civera-sancho)
+>
 > I3A, University of Zaragoza
 
 <p align="center">
@@ -28,7 +29,7 @@ pip3 install -r path/to/Endo-Depth-and-Motion/requirements.txt
 ```
 
 
-## 💾 Test data
+## 💾 Data
 
 The [Hamlyn](http://hamlyn.doc.ic.ac.uk/vision/) rectified images and the rectified calibration used to train and test the *Endo-Depth* models can be found [here](https://drive.google.com/drive/folders/1SYRByyAdlySvltn0CFQea1UY3AoutnKu?usp=sharing). The Hamlyn data used to test the tracking and the volumetric fusion can be found [here](https://drive.google.com/drive/folders/1-geZ5jJkofRd8Q3uOSOBNAHPKd0u5B2f?usp=sharing). The color and depth images are slightly cropped to avoid the small distortions of the depth *Endo-Depth* produces at the borders. The depth was computed using the stereo [Endo-Depth models](https://drive.google.com/drive/folders/17t30Jz3X-BSz-Fz7BkONqRQsOOaf5xR9?usp=sharing) and it is in [mm] and in image format uint16. The saturation depth is 300 [mm]. You can also replace it with your own data.
 
