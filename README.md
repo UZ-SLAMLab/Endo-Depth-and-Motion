@@ -1,6 +1,6 @@
 # Endo-Depth-and-Motion
 
-This repository contains the code of *Endo-Depth*'s depth predictions from single images, the photometric and the others trackings methods and the volumetric fusion used in the paper
+This repository contains the code of *Endo-Depth*'s depth prediction from single images, the photometric and the others trackings methods and the volumetric fusion used in the paper
 
 > **Localization and Reconstruction in Endoscopic Videos using Depth Networks and Photometric Constraints**
 >
