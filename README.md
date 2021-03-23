@@ -1,14 +1,22 @@
 # Endo-Depth-and-Motion
 
-This repository contains the tracking and volumetric fusion code of the methods used in
+This repository contains the code of Endo-Depth's depth predictions from single images, the photometric and the others trackings methods and the volumetric fusion used in the paper
 
 > **Localization and Reconstruction in Endoscopic Videos using Depth Networks and Photometric Constraints**
 >
 > [David Recasens](https://davidrecasens.github.io/), [José Lamarca](https://webdiis.unizar.es/~jlamarca/), [José M. Fácil](https://webdiis.unizar.es/~jmfacil/), [José María M. Montiel](https://janovas.unizar.es/sideral/CV/jose-maria-martinez-montiel) and [Javier Civera](https://janovas.unizar.es/sideral/CV/javier-civera-sancho)
+> I3A, University of Zaragoza
 
 <p align="center">
   <img src="assets/teaser.gif" alt="example input output gif" width="600" />
 </p>
+<p align="center">
+  [Full video](https://youtu.be/G1XWIyEbvPc) of Endo-Depth-and-Motion working on Hamlyn dataset
+</p>
+
+## 💭 About
+
+Endo-Depth-and-Motion is a pipeline where first, pixel-wise depth is predicted on a set of keyframes of the endoscopic monocular video using a deep neural network (Endo-Depth). The motion of each frame with respect to the closest keyframe is estimated by minimizing the photometric error, robustified using image pyramids and robust error functions. Finally, the depth maps of the keyframes are fused in a Truncated Signed Distance Function (TSDF)-based volumetric representation.
 
 
 ## ⚙️ Setup
@@ -22,7 +30,17 @@ pip3 install -r path/to/Endo-Depth-and-Motion/requirements.txt
 
 ## 💾 Test data
 
-The [Hamlyn](http://hamlyn.doc.ic.ac.uk/vision/) data used to test the tracking and the volumetric fusion can be found [here](https://drive.google.com/drive/folders/1-geZ5jJkofRd8Q3uOSOBNAHPKd0u5B2f?usp=sharing). The color and depth images are little cropped to avoid the small distortions of the depth Endo-Depth produces at the borders. The depth was computed using the stereo [Endo-Depth models](https://drive.google.com/drive/folders/17t30Jz3X-BSz-Fz7BkONqRQsOOaf5xR9?usp=sharing). You can also replace it with your own data.
+The [Hamlyn](http://hamlyn.doc.ic.ac.uk/vision/) rectified images and the rectified calibration used to train and test the Endo-Depth models can be found [here](https://drive.google.com/drive/folders/1SYRByyAdlySvltn0CFQea1UY3AoutnKu?usp=sharing). The Hamlyn data used to test the tracking and the volumetric fusion can be found [here](https://drive.google.com/drive/folders/1-geZ5jJkofRd8Q3uOSOBNAHPKd0u5B2f?usp=sharing). The color and depth images are slightly cropped to avoid the small distortions of the depth Endo-Depth produces at the borders. The depth was computed using the stereo [Endo-Depth models](https://drive.google.com/drive/folders/17t30Jz3X-BSz-Fz7BkONqRQsOOaf5xR9?usp=sharing) and it is in [mm] and in image format uint16. The saturation depth is 300 [mm]. You can also replace it with your own data.
+
+
+## 🧠 Endo-Depth
+
+To predict the depth for a single or multiple images use
+```shell
+python apps/depth_estimate/__main__.py --image_path path/to/image_folder --model_path path/to/model_folder
+```
+
+You have must have already download the [Endo-Depth model](https://drive.google.com/drive/folders/17t30Jz3X-BSz-Fz7BkONqRQsOOaf5xR9?usp=sharing) you want to use. If you prefer to store the depth predictions in another folder use the argument --output_path. You can also select the type of the output with --output_type which is set by default to *grayscale* (grayscale depth images), but you can also choose *color* (colormapped depth images). By default, the saturation depth is set to *300* [mm], you can change this limit using --saturation_depth. Also, the image depth scaling is by default *52.864* because for Hamlyn dataset the weighted average baseline is 5.2864. This number is multiplied by 10 because the imposed baseline during training is 0.1. The image extension to search for in folder can be changed with --ext (now set as *jpg*), and you can disable CUDA using the argument --no_cuda.
 
 
 ## 👀 Tracking
@@ -32,14 +50,14 @@ You can execute our photometric tracking with
 python apps/tracking_ours/__main__.py -d cuda:0 -i path/to/hamlyn_tracking_test_data -o apps/tracking_ours/results
 ```
 
-being -i the input path to the folder containing the different video folders, -o the output path where the odometry in format .pkl is saved. If you want to run the script on CPU instead of on GPU just remove the argument -d cuda:0. The ratio frame-keyframe and number of floors of the pyramid are set to 2 by default, but they can be changed with the arguments -fr and -st, respectively. The output odometries of the Hamlyn test data using our tracking can be found [here](https://drive.google.com/drive/folders/1bcF-nrz-iWS6_mSj4fjuVBA3TvhZYRTB?usp=sharing).
+being -i the input path to the folder containing the different video folders, -o the output path where the odometry in format .pkl is saved. If you want to run the script on CPU instead of on GPU just remove the argument -d *cuda:0*. The ratio frame-keyframe and number of floors of the pyramid are set to 2 by default, but they can be changed with the arguments -fr and -st, respectively. The output odometries of the Hamlyn test data using our tracking can be found [here](https://drive.google.com/drive/folders/1bcF-nrz-iWS6_mSj4fjuVBA3TvhZYRTB?usp=sharing).
 
-To use the tracking methods of [Open3D](http://www.open3d.org/) run
+To use alternatively the tracking methods of [Open3D](http://www.open3d.org/) run
 ```shell
 python apps/tracking_open3d/__main__.py -d cuda:0 -i path/to/hamlyn_tracking_test_data -o apps/tracking_open3d/results -t park
 ```
 
-The tracking method can be changed modifying the argument -t: point-to-point (ICP point-to-point), point-to-plane (ICP point-to-plane), steinbrucker (photometric) and park (hybrid photometric and geometric). Additionally, with the argument -r you can execute a global registration with RANSAC to compute a pre-translation between two point clouds before calculating the final translation with the local registration.
+The tracking method can be changed modifying the argument -t: *point-to-point* (ICP point-to-point), *point-to-plane* (ICP point-to-plane), *steinbrucker* (photometric) and *park* (hybrid photometric and geometric). Additionally, with the argument -r you can execute a global registration with RANSAC to compute a pre-translation between two point clouds before calculating the final translation with the local registration.
 
 
 ## ♻️ Volumetric fusion

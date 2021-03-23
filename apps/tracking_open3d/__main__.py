@@ -82,6 +82,7 @@ def parse_args() -> argparse.Namespace:
              "before calculating the final translation with the local registration",
         action="store_true"
     )
+
     return parser.parse_args()
 
 
