@@ -11,7 +11,7 @@ This repository contains the code of *Endo-Depth*'s depth predictions from singl
   <img src="assets/teaser.gif" alt="example input output gif" width="600" />
 </p>
 <p align="center">
-  <a href="https://youtu.be/G1XWIyEbvPc">Full video</a> of <i>Endo-Depth-and-Motion</i> working on Hamlyn dataset: 
+  <a href="https://youtu.be/G1XWIyEbvPc">Full video</a> of <i>Endo-Depth-and-Motion</i> working on Hamlyn dataset
 </p>
 
 ## 💭 About
