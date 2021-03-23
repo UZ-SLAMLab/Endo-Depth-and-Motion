@@ -1,6 +1,6 @@
 # Endo-Depth-and-Motion
 
-This repository contains the code of Endo-Depth's depth predictions from single images, the photometric and the others trackings methods and the volumetric fusion used in the paper
+This repository contains the code of *Endo-Depth*'s depth predictions from single images, the photometric and the others trackings methods and the volumetric fusion used in the paper
 
 > **Localization and Reconstruction in Endoscopic Videos using Depth Networks and Photometric Constraints**
 >
@@ -11,12 +11,12 @@ This repository contains the code of Endo-Depth's depth predictions from single 
   <img src="assets/teaser.gif" alt="example input output gif" width="600" />
 </p>
 <p align="center">
-  [Full video](https://youtu.be/G1XWIyEbvPc) of Endo-Depth-and-Motion working on Hamlyn dataset
+  Full video of *Endo-Depth-and-Motion* working on Hamlyn dataset: https://youtu.be/G1XWIyEbvPc
 </p>
 
 ## 💭 About
 
-Endo-Depth-and-Motion is a pipeline where first, pixel-wise depth is predicted on a set of keyframes of the endoscopic monocular video using a deep neural network (Endo-Depth). The motion of each frame with respect to the closest keyframe is estimated by minimizing the photometric error, robustified using image pyramids and robust error functions. Finally, the depth maps of the keyframes are fused in a Truncated Signed Distance Function (TSDF)-based volumetric representation.
+*Endo-Depth-and-Motion* is a pipeline where first, pixel-wise depth is predicted on a set of keyframes of the endoscopic monocular video using a deep neural network (*Endo-Depth*). The motion of each frame with respect to the closest keyframe is estimated by minimizing the photometric error, robustified using image pyramids and robust error functions. Finally, the depth maps of the keyframes are fused in a Truncated Signed Distance Function (TSDF)-based volumetric representation.
 
 
 ## ⚙️ Setup
@@ -30,7 +30,7 @@ pip3 install -r path/to/Endo-Depth-and-Motion/requirements.txt
 
 ## 💾 Test data
 
-The [Hamlyn](http://hamlyn.doc.ic.ac.uk/vision/) rectified images and the rectified calibration used to train and test the Endo-Depth models can be found [here](https://drive.google.com/drive/folders/1SYRByyAdlySvltn0CFQea1UY3AoutnKu?usp=sharing). The Hamlyn data used to test the tracking and the volumetric fusion can be found [here](https://drive.google.com/drive/folders/1-geZ5jJkofRd8Q3uOSOBNAHPKd0u5B2f?usp=sharing). The color and depth images are slightly cropped to avoid the small distortions of the depth Endo-Depth produces at the borders. The depth was computed using the stereo [Endo-Depth models](https://drive.google.com/drive/folders/17t30Jz3X-BSz-Fz7BkONqRQsOOaf5xR9?usp=sharing) and it is in [mm] and in image format uint16. The saturation depth is 300 [mm]. You can also replace it with your own data.
+The [Hamlyn](http://hamlyn.doc.ic.ac.uk/vision/) rectified images and the rectified calibration used to train and test the *Endo-Depth* models can be found [here](https://drive.google.com/drive/folders/1SYRByyAdlySvltn0CFQea1UY3AoutnKu?usp=sharing). The Hamlyn data used to test the tracking and the volumetric fusion can be found [here](https://drive.google.com/drive/folders/1-geZ5jJkofRd8Q3uOSOBNAHPKd0u5B2f?usp=sharing). The color and depth images are slightly cropped to avoid the small distortions of the depth *Endo-Depth* produces at the borders. The depth was computed using the stereo [Endo-Depth models](https://drive.google.com/drive/folders/17t30Jz3X-BSz-Fz7BkONqRQsOOaf5xR9?usp=sharing) and it is in [mm] and in image format uint16. The saturation depth is 300 [mm]. You can also replace it with your own data.
 
 
 ## 🧠 Endo-Depth
@@ -62,7 +62,7 @@ The tracking method can be changed modifying the argument -t: *point-to-point* (
 
 ## ♻️ Volumetric fusion
 
-In order to get the refined 3D map, you can fuse the registered pseudo-RGBD keyframes obtained from Endo-Depth and the tracking with
+In order to get the refined 3D map, you can fuse the registered pseudo-RGBD keyframes obtained from *Endo-Depth* and the tracking with
 ```shell
 python apps/volumetric_fusion/__main__.py -i apps/tracking_ours/results/test1.pkl -o path/to/hamlyn_tracking_test_data/test1
 ```
