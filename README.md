@@ -69,3 +69,8 @@ python apps/volumetric_fusion/__main__.py -i apps/tracking_ours/results/test1.pk
 ```
 
 where -i is the input odometry in format .pkl computed with the tracking. The output 3D meshes of the Hamlyn test data using the volumetric fusion are [here](https://drive.google.com/drive/folders/1sgmdtKFL1Lu8eqljKN-o_cjHRXIa7VI-?usp=sharing).
+
+
+## 👩‍⚖️ License
+
+Endo-Depth-and-Motion is released under [GPL-3.9 License](LICENSE). The code in the folder apps/depth_estimate is property of the authors of [Monodepth2](https://github.com/nianticlabs/monodepth2) and has its own [License](apps/depth_estimate/LICENSE).
