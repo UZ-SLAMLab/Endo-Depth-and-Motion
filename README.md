@@ -31,7 +31,7 @@ pip3 install -r path/to/Endo-Depth-and-Motion/requirements.txt
 
 ## 💾 Data
 
-The [Hamlyn](http://hamlyn.doc.ic.ac.uk/vision/) rectified images and the rectified calibration used to train and test the *Endo-Depth* models can be found [here](https://drive.google.com/drive/folders/1SYRByyAdlySvltn0CFQea1UY3AoutnKu?usp=sharing). The Hamlyn data used to test the tracking and the volumetric fusion can be found [here](https://drive.google.com/drive/folders/1-geZ5jJkofRd8Q3uOSOBNAHPKd0u5B2f?usp=sharing). The color and depth images are slightly cropped to avoid the small distortions of the depth *Endo-Depth* produces at the borders. The depth was computed using the stereo [Endo-Depth models](https://drive.google.com/drive/folders/17t30Jz3X-BSz-Fz7BkONqRQsOOaf5xR9?usp=sharing) and it is in [mm] and in image format uint16. The saturation depth is 300 [mm]. You can also replace it with your own data.
+The [Hamlyn](http://hamlyn.doc.ic.ac.uk/vision/) rectified images and the rectified calibration used to train and test the *Endo-Depth* models can be found [here](https://drive.google.com/drive/folders/1SYRByyAdlySvltn0CFQea1UY3AoutnKu?usp=sharing). The Hamlyn data used to test the tracking and the volumetric fusion is [here](https://drive.google.com/drive/folders/1-geZ5jJkofRd8Q3uOSOBNAHPKd0u5B2f?usp=sharing). The color and depth images are slightly cropped to avoid the small distortions of the depth *Endo-Depth* produces at the borders. The depth was computed using the stereo [Endo-Depth models](https://drive.google.com/drive/folders/17t30Jz3X-BSz-Fz7BkONqRQsOOaf5xR9?usp=sharing) and it is in [mm] and in image format uint16. The saturation depth is 300 [mm]. You can also replace it with your own data.
 
 
 ## 🧠 Endo-Depth
@@ -68,4 +68,4 @@ In order to get the refined 3D map, you can fuse the registered pseudo-RGBD keyf
 python apps/volumetric_fusion/__main__.py -i apps/tracking_ours/results/test1.pkl -o path/to/hamlyn_tracking_test_data/test1
 ```
 
-where -i is the input odometry in format .pkl computed with the tracking. The output 3D meshes of the Hamlyn test data using the volumetric fusion can be found [here](https://drive.google.com/drive/folders/1sgmdtKFL1Lu8eqljKN-o_cjHRXIa7VI-?usp=sharing).
+where -i is the input odometry in format .pkl computed with the tracking. The output 3D meshes of the Hamlyn test data using the volumetric fusion are [here](https://drive.google.com/drive/folders/1sgmdtKFL1Lu8eqljKN-o_cjHRXIa7VI-?usp=sharing).
