@@ -73,4 +73,4 @@ where -i is the input odometry in format .pkl computed with the tracking. The ou
 
 ## 👩‍⚖️ License
 
-Endo-Depth-and-Motion is released under [GPL-3.9 License](LICENSE). The code in the folder apps/depth_estimate is property of the authors of [Monodepth2](https://github.com/nianticlabs/monodepth2) and has its own [License](apps/depth_estimate/LICENSE).
+Endo-Depth-and-Motion is released under [GPL-3.0 License](LICENSE). The code in the folder apps/depth_estimate is property of the authors of [Monodepth2](https://github.com/nianticlabs/monodepth2) and has its own [License](apps/depth_estimate/LICENSE).
