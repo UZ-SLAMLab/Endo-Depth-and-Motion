@@ -7,6 +7,8 @@ This repository contains the code of *Endo-Depth*'s depth prediction from single
 > [David Recasens](https://davidrecasens.github.io/), [José Lamarca](https://webdiis.unizar.es/~jlamarca/), [José M. Fácil](https://webdiis.unizar.es/~jmfacil/), [José María M. Montiel](https://janovas.unizar.es/sideral/CV/jose-maria-martinez-montiel) and [Javier Civera](https://janovas.unizar.es/sideral/CV/javier-civera-sancho)
 >
 > I3A, University of Zaragoza
+>
+> [arXiv paper](https://arxiv.org/abs/2103.16525)
 
 <p align="center">
   <img src="assets/teaser.gif" alt="example input output gif" width="600" />
@@ -14,6 +16,17 @@ This repository contains the code of *Endo-Depth*'s depth prediction from single
 <p align="center">
   <a href="https://youtu.be/G1XWIyEbvPc">Full video</a> of <i>Endo-Depth-and-Motion</i> working on Hamlyn dataset
 </p>
+
+```shell
+@misc{recasens2021endodepthandmotion,
+      title={Endo-Depth-and-Motion: Localization and Reconstruction in Endoscopic Videos using Depth Networks and Photometric Constraints}, 
+      author={David Recasens and José Lamarca and José M. Fácil and J. M. M. Montiel and Javier Civera},
+      year={2021},
+      eprint={2103.16525},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
 
 ## 💭 About
 
