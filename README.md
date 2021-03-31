@@ -20,7 +20,7 @@ This repository contains the code of *Endo-Depth*'s depth prediction from single
 ```shell
 @misc{recasens2021endodepthandmotion,
       title={Endo-Depth-and-Motion: Localization and Reconstruction in Endoscopic Videos using Depth Networks and Photometric Constraints}, 
-      author={David Recasens and José Lamarca and José M. Fácil and J. M. M. Montiel and Javier Civera},
+      author={David Recasens and Jos{\'{e}} Lamarca and Jos{\'{e}} M. F{\'{a}}cil and J. M. M. Montiel and Javier Civera},
       year={2021},
       eprint={2103.16525},
       archivePrefix={arXiv},
