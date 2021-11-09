@@ -7,8 +7,10 @@ This repository contains the code of *Endo-Depth*'s depth prediction from single
 > [David Recasens](https://davidrecasens.github.io/), [José Lamarca](https://webdiis.unizar.es/~jlamarca/), [José M. Fácil](https://webdiis.unizar.es/~jmfacil/), [José María M. Montiel](https://janovas.unizar.es/sideral/CV/jose-maria-martinez-montiel) and [Javier Civera](https://janovas.unizar.es/sideral/CV/javier-civera-sancho)
 >
 > I3A, University of Zaragoza
->
+> 
+> [RA-L paper](https://ieeexplore.ieee.org/abstract/document/9478277/)
 > [arXiv paper](https://arxiv.org/abs/2103.16525)
+> [IROS 2021 video presentation](https://youtu.be/YfXkK9R0htE)
 
 <p align="center">
   <img src="assets/teaser.gif" alt="example input output gif" width="600" />
@@ -18,13 +20,15 @@ This repository contains the code of *Endo-Depth*'s depth prediction from single
 </p>
 
 ```shell
-@misc{recasens2021endodepthandmotion,
-      title={Endo-Depth-and-Motion: Localization and Reconstruction in Endoscopic Videos using Depth Networks and Photometric Constraints}, 
-      author={David Recasens and Jos{\'{e}} Lamarca and Jos{\'{e}} M. F{\'{a}}cil and J. M. M. Montiel and Javier Civera},
-      year={2021},
-      eprint={2103.16525},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@article{recasens2021endo,
+  title={Endo-Depth-and-Motion: Reconstruction and Tracking in Endoscopic Videos Using Depth Networks and Photometric Constraints},
+  author={Recasens, David and Lamarca, Jos{\'e} and F{\'a}cil, Jos{\'e} M and Montiel, JMM and Civera, Javier},
+  journal={IEEE Robotics and Automation Letters},
+  volume={6},
+  number={4},
+  pages={7225--7232},
+  year={2021},
+  publisher={IEEE}
 }
 ```
 
