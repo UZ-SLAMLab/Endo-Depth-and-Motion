@@ -8,8 +8,8 @@ This repository contains the code of *Endo-Depth*'s depth prediction from single
 >
 > I3A, University of Zaragoza
 > 
-> [RA-L paper](https://ieeexplore.ieee.org/abstract/document/9478277/)
-> [arXiv paper](https://arxiv.org/abs/2103.16525)
+> [RA-L paper](https://ieeexplore.ieee.org/abstract/document/9478277/)     |     
+> [arXiv paper](https://arxiv.org/abs/2103.16525)     |     
 > [IROS 2021 video presentation](https://youtu.be/YfXkK9R0htE)
 
 <p align="center">
