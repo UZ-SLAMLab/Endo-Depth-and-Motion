@@ -18,17 +18,14 @@ def load_scene_files(scene: str) -> Dict[str, Union[List[str], np.ndarray]]:
 
     Arguments:
         scene {str} -- Path to where the scene is stored.
-            E.g. /media/david/DiscoDuroLinux/Datasets/Monodepth2_results/Hamlyn/stereo_ImgNet_halfRes_epoch2/test19
 
     Returns:
         Dict[str, Union[List[str], np.ndarray]] -- Output of a dictionary with the keys:
             list_color_images = list of rgb files,
             list_depth_images = list of depth files,
             list_pose_files = list_pose_files,
-            extrinsic_color = extrinsic_color,
-            extrinsic_depth = extrinsic_depth,
-            intrinsic_color = intrinsic_color,
-            intrinsic_depth = intrinsic_depth,
+            extrinsics = extrinsics,
+            intrinsics = intrinsics
     """
     # -- Load list of files. (ordered but as string)
     list_color_images = order_list_paths_by_int_filename(
@@ -39,27 +36,27 @@ def load_scene_files(scene: str) -> Dict[str, Union[List[str], np.ndarray]]:
     )
 
     # -- Open intrinsic and extrinsic files.
-    extrinsic_color = txt_to_nparray(
-        open(Path(scene) / "intrinsic/extrinsic_color.txt")
-    )
-    extrinsic_depth = txt_to_nparray(
-        open(Path(scene) / "intrinsic/extrinsic_depth.txt")
-    )
-    intrinsic_color = txt_to_nparray(
-        open(Path(scene) / "intrinsic/intrinsic_color.txt")
-    )
-    intrinsic_depth = txt_to_nparray(
-        open(Path(scene) / "intrinsic/intrinsic_depth.txt")
+    if (Path(scene) / "extrinsics.txt").is_file():
+        extrinsics = txt_to_nparray(
+            open(Path(scene) / "extrinsics.txt")
+        )
+    intrinsics = txt_to_nparray(
+        open(Path(scene) / "intrinsics.txt")
     )
 
-    return dict(
-        list_color_images=list_color_images,
-        list_depth_images=list_depth_images,
-        extrinsic_color=extrinsic_color,
-        extrinsic_depth=extrinsic_depth,
-        intrinsic_color=intrinsic_color,
-        intrinsic_depth=intrinsic_depth,
-    )
+    if (Path(scene) / "extrinsics.txt").is_file():
+        return dict(
+            list_color_images=list_color_images,
+            list_depth_images=list_depth_images,
+            extrinsics=extrinsics,
+            intrinsics=intrinsics,
+        )
+    else:
+        return dict(
+            list_color_images=list_color_images,
+            list_depth_images=list_depth_images,
+            intrinsics=intrinsics,
+        )
 
 
 def depth_read(path: str, dtype=np.float16, depth_shift: float = 1000.0) -> np.ndarray:
