@@ -82,8 +82,8 @@ The dataset folder structure should be as follows:
    dataset_folder   
       -->rectified01      
          -->color	 
-	    -->depth	       
-	    -->intrinsics.txt	       
+	 -->depth	       
+	 -->intrinsics.txt	       
       ...
 ```
 
