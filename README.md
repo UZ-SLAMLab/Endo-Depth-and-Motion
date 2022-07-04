@@ -77,6 +77,13 @@ python apps/tracking_open3d/__main__.py -d cuda:0 -i path/to/hamlyn_tracking_tes
 
 The tracking method can be changed modifying the argument -t: *point-to-point* (ICP point-to-point), *point-to-plane* (ICP point-to-plane), *steinbrucker* (photometric) and *park* (hybrid photometric and geometric). Additionally, with the argument -r you can execute a global registration with RANSAC to compute a pre-translation between two point clouds before calculating the final translation with the local registration.
 
+The dataset folder structure should be as follows:
+   dataset_folder
+      -->rectified01
+         -->color
+	       -->depth
+	       -->intrinsics.txt
+      ...
 
 ## ♻️ Volumetric fusion
 
