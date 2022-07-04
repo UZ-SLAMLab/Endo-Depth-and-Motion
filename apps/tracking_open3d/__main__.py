@@ -432,7 +432,7 @@ def load_hamlyn_frame(scene_info: Dict[str, List[str]], frame_number: int):
     depth_np = cv.imread(depth_path, cv.IMREAD_ANYDEPTH).astype(np.float32) / 1000
 
     # -- Get the camera matrices.
-    k_depth: np.ndarray = scene_info["intrinsic_depth"][:3, :3]  # type: ignore
+    k_depth: np.ndarray = scene_info["intrinsics"][:3, :3]  # type: ignore
 
     # -- Transform into tensors.
     k_depth = kornia.utils.image_to_tensor(k_depth, keepdim=False).squeeze(1)  # Bx3x3
