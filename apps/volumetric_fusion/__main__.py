@@ -141,7 +141,7 @@ def load_frame(root, frame_number: int):
     color = o3d.io.read_image(os.path.join(root, "color", "{:010d}.jpg".format(frame_number)))
     depth = cv.imread(os.path.join(root, "depth", "{:010d}.png".format(frame_number)), cv.IMREAD_ANYDEPTH)\
                 .astype(np.float32) / 1000  # meters
-    intrinsics = txt_to_nparray(os.path.join(root, "intrinsic", "intrinsic_color.txt"))
+    intrinsics = txt_to_nparray(os.path.join(root, "intrinsics.txt"))
     k: np.ndarray = intrinsics[:3, :3]  # type: ignore
 
     # -- Transform into tensors.
