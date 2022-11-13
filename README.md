@@ -48,7 +48,7 @@ pip3 install -r path/to/Endo-Depth-and-Motion/requirements.txt
 
 ## 💾 Data
 
-The [Hamlyn](http://hamlyn.doc.ic.ac.uk/vision/) rectified images and the rectified calibration used to train and test the *Endo-Depth* models can be found [here](https://drive.google.com/drive/folders/1SYRByyAdlySvltn0CFQea1UY3AoutnKu?usp=sharing). The Hamlyn data used to test the tracking and the volumetric fusion is [here](https://drive.google.com/drive/folders/1-geZ5jJkofRd8Q3uOSOBNAHPKd0u5B2f?usp=sharing). The color and depth images are slightly cropped to avoid the small distortions of the depth *Endo-Depth* produces at the borders. The depth was computed using the stereo [Endo-Depth models](https://drive.google.com/drive/folders/17t30Jz3X-BSz-Fz7BkONqRQsOOaf5xR9?usp=sharing) and it is in [mm] and in image format uint16. The saturation depth is 300 [mm]. You can also replace it with your own data.
+The [Hamlyn](http://hamlyn.doc.ic.ac.uk/vision/) rectified images splits and the rectified calibration used to train and test the *Endo-Depth* models can be found [here](https://unizares-my.sharepoint.com/:f:/g/personal/recasens_unizar_es/ErLqz4PRRqtPo4DaBACLPeAB2W20xRQDfSML1gXiLGkrjg?e=3htgPj). The Hamlyn data used to test the tracking and the volumetric fusion is [here](https://unizares-my.sharepoint.com/:f:/g/personal/recasens_unizar_es/Epwqt3JCs4BJnEiV9esUH0gBeJYbTmmNCouEpncW4MjC8A?e=B0cYB2). The color and depth images are slightly cropped to avoid the small distortions of the depth *Endo-Depth* produces at the borders. The depth was computed using the stereo [Endo-Depth models](https://unizares-my.sharepoint.com/:f:/g/personal/recasens_unizar_es/EmBjII1JZ9RJntKgoai8a_8BPvqyY02w1S43vQoNTiQh8Q?e=D7mFLf) and it is in [mm] and in image format uint16. The saturation depth is 300 [mm]. You can also replace it with your own data.
 
 
 ## 🧠 Endo-Depth
@@ -58,7 +58,7 @@ To predict the depth for a single or multiple images use
 python apps/depth_estimate/__main__.py --image_path path/to/image_folder --model_path path/to/model_folder
 ```
 
-You have must have already download the [Endo-Depth model](https://drive.google.com/drive/folders/17t30Jz3X-BSz-Fz7BkONqRQsOOaf5xR9?usp=sharing) you want to use. If you prefer to store the depth predictions in another folder use the argument --output_path. You can also select the type of the output with --output_type which is set by default to *grayscale* (grayscale depth images), but you can also choose *color* (colormapped depth images). By default, the saturation depth is set to *300* [mm], you can change this limit using --saturation_depth. Also, the image depth scaling is by default *52.864* because for Hamlyn dataset the weighted average baseline is 5.2864. This number is multiplied by 10 because the imposed baseline during training is 0.1. The image extension to search for in folder can be changed with --ext (now set as *jpg*), and you can disable CUDA using the argument --no_cuda.
+You have must have already download the [Endo-Depth model](https://unizares-my.sharepoint.com/:f:/g/personal/recasens_unizar_es/EmBjII1JZ9RJntKgoai8a_8BPvqyY02w1S43vQoNTiQh8Q?e=85e2Bv) you want to use. If you prefer to store the depth predictions in another folder use the argument --output_path. You can also select the type of the output with --output_type which is set by default to *grayscale* (grayscale depth images), but you can also choose *color* (colormapped depth images). By default, the saturation depth is set to *300* [mm], you can change this limit using --saturation_depth. Also, the image depth scaling is by default *52.864* because for Hamlyn dataset the weighted average baseline is 5.2864. This number is multiplied by 10 because the imposed baseline during training is 0.1. The image extension to search for in folder can be changed with --ext (now set as *jpg*), and you can disable CUDA using the argument --no_cuda.
 
 
 ## 👀 Tracking
@@ -68,7 +68,7 @@ You can execute our photometric tracking with
 python apps/tracking_ours/__main__.py -d cuda:0 -i path/to/hamlyn_tracking_test_data -o apps/tracking_ours/results
 ```
 
-being -i the input path to the folder containing the different video folders, -o the output path where the odometry in format .pkl is saved. If you want to run the script on CPU instead of on GPU just remove the argument -d *cuda:0*. The ratio frame-keyframe and number of floors of the pyramid are set to 2 by default, but they can be changed with the arguments -fr and -st, respectively. The output odometries of the Hamlyn test data using our tracking can be found [here](https://drive.google.com/drive/folders/1bcF-nrz-iWS6_mSj4fjuVBA3TvhZYRTB?usp=sharing).
+being -i the input path to the folder containing the different video folders, -o the output path where the odometry in format .pkl is saved. If you want to run the script on CPU instead of on GPU just remove the argument -d *cuda:0*. The ratio frame-keyframe and number of floors of the pyramid are set to 2 by default, but they can be changed with the arguments -fr and -st, respectively. The output odometries of the Hamlyn test data using our tracking can be found [here](https://unizares-my.sharepoint.com/:f:/g/personal/recasens_unizar_es/EmskdlBSuTlHk2B13S37QpoBx1sdXXpzAdDOUMxSGMW_kA?e=mC4c1B).
 
 To use alternatively the tracking methods of [Open3D](http://www.open3d.org/) run
 ```shell
@@ -94,7 +94,7 @@ In order to get the refined 3D map, you can fuse the registered pseudo-RGBD keyf
 python apps/volumetric_fusion/__main__.py -i apps/tracking_ours/results/test1.pkl -o path/to/hamlyn_tracking_test_data/test1
 ```
 
-where -i is the input odometry in format .pkl computed with the tracking. The output 3D meshes of the Hamlyn test data using the volumetric fusion are [here](https://drive.google.com/drive/folders/1sgmdtKFL1Lu8eqljKN-o_cjHRXIa7VI-?usp=sharing).
+where -i is the input odometry in format .pkl computed with the tracking. The output 3D meshes of the Hamlyn test data using the volumetric fusion are [here](https://unizares-my.sharepoint.com/:f:/g/personal/recasens_unizar_es/EncVGTfn_ZtFneAnZIrj6dkBrYCmGBUeq1fKlun6EmJ6-A?e=h5i1PZ).
 
 
 ## 👩‍⚖️ License
