@@ -7,7 +7,7 @@ torch==1.7.0
 torchvision>=0.8.0
 tensorboard==2.2.1
 git+https://github.com/kornia/kornia
-Pillow==9.0.1
+Pillow==9.3.0
 logzero==1.5.0
 pytest==5.4.2
 imageio==2.8.0
