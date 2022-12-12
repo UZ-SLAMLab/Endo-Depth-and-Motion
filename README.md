@@ -44,6 +44,20 @@ We have ran our experiments under CUDA 9.1.85, CuDNN 7.6.5 and Ubuntu 18.04. We 
 conda install -c conda-forge opencv=4.2.0
 pip3 install -r path/to/Endo-Depth-and-Motion/requirements.txt
 ```
+Install PyTorch 1.7.0 accordingly with your Cuda version (see [PyTorch website](https://pytorch.org/get-started/previous-versions/) for more alternatives).
+```shell
+# CUDA 11.0
+pip install torch==1.7.0+cu110 torchvision==0.8.0+cu110 torchaudio==0.7.0 -f https://download.pytorch.org/whl/torch_stable.html
+
+# CUDA 10.2
+pip install torch==1.7.0 torchvision==0.8.0 torchaudio==0.7.0
+
+# CUDA 10.1
+pip install torch==1.7.0+cu101 torchvision==0.8.0+cu101 torchaudio==0.7.0 -f https://download.pytorch.org/whl/torch_stable.html
+
+# CUDA 9.2
+pip install torch==1.7.0+cu92 torchvision==0.8.0+cu92 torchaudio==0.7.0 -f https://download.pytorch.org/whl/torch_stable.html
+```
 
 
 ## 💾 Data
