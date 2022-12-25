@@ -101,6 +101,13 @@ The dataset folder structure should be as follows:
       ...
 ```
 
+**Tips for the visualization**. When the two windows (images and 3D map) display, left click on the middle of the images window and then you can use the following commands pressing the buttons:
+```shell
+a: to start the automode. The current displayed scene will be tracked and you will see it in real time in the 3D window.
+s: to stop the automode. This can be done only when a frames is tracked and before it start the following one. So just smash the button it stops.
+h: to print help about more commands, like skip the scene or to track frame by frame.
+```
+	
 ## ♻️ Volumetric fusion
 
 In order to get the refined 3D map, you can fuse the registered pseudo-RGBD keyframes obtained from *Endo-Depth* and the tracking with
